@@ -2,6 +2,7 @@
 outputs/
 test/
 logs/
+datasets/
 __pycache__/
 configs/cifs9a31
 core
