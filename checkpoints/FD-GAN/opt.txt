@@ -1,6 +1,6 @@
 ------------ Options -------------
 arch: resnet50
-batch_size: 32
+batch_size: 48
 checkpoints: ./checkpoints/
 connect_layers: 0
 dataroot: ./datasets/

@@ -3,6 +3,7 @@ outputs/
 test/
 logs/
 datasets/
+datasets/market1501/
 __pycache__/
 configs/cifs9a31
 core

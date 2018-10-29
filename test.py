@@ -46,6 +46,19 @@ def get_data(name, data_dir, height, width, batch_size, workers, pose_aug):
 
     return dataset, train_loader, test_loader
 
+######################################################################
+# recover image
+# -----------------
+def recover(inp):
+    """Imshow for Tensor."""
+    inp = inp.numpy().transpose((1, 2, 0))
+    mean = np.array([0.485, 0.456, 0.406])
+    std = np.array([0.229, 0.224, 0.225])
+    inp = std * inp + mean
+    inp = inp * 255.0
+    inp = np.clip(inp, 0, 255)
+    return inp
+
 def main():
     opt = Options().parse()
     dataset, train_loader, test_loader = get_data(opt.dataset, opt.dataroot, opt.height, opt.width, opt.batch_size, opt.workers, opt.pose_aug)
@@ -84,14 +97,15 @@ def main():
             fake_img = model.forward()
             #print (fake_img.shape)
             #model.optimize_parameters()
-            fake_img = fake_img.cpu().numpy()
+            fake_img = fake_img.cpu()
             print (i) 
             for j in range(opt.batch_size):
                 save_img = np.zeros(fake_img.shape[1:])
                 save_img = fake_img[j,:,:,:]
-                save_img = save_img.transpose(1,2,0)
+                save_img = recover(save_img)
                 #save_img = np.reshape(save_img, (fake_img.shape[1:]))
-                save_name = data[0]['origin_name'][j] + 'to' + data[0]['target_name'][j] + '.jpg'
+                #save_name = data[0]['origin_name'][j] + 'to' + data[0]['target_name'][j] + '.jpg'
+                save_name = data[0]['target_name'][j] + '.jpg'  # save one target.
                 img_path = os.path.join(target_path, save_name)
                 scipy.misc.imsave(img_path, save_img)
             '''
