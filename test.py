@@ -104,8 +104,8 @@ def main():
                 save_img = fake_img[j,:,:,:]
                 save_img = recover(save_img)
                 #save_img = np.reshape(save_img, (fake_img.shape[1:]))
-                #save_name = data[0]['origin_name'][j] + 'to' + data[0]['target_name'][j] + '.jpg'
-                save_name = data[0]['target_name'][j] + '.jpg'  # save one target.
+                save_name = data[0]['origin_name'][j] + 'to' + data[0]['target_name'][j] + '.jpg'
+                #save_name = data[0]['target_name'][j] + '.jpg'  # save one target.
                 img_path = os.path.join(target_path, save_name)
                 scipy.misc.imsave(img_path, save_img)
             '''
