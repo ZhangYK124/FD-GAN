@@ -1,7 +1,7 @@
 ![Python 3](https://img.shields.io/badge/python-3-green.svg) ![Pytorch 0.3](https://img.shields.io/badge/pytorch-0.3-blue.svg)
 # FD-GAN: Pose-guided Feature Distilling GAN for Robust Person Re-identification
 
-Generate Images.
+Download the pretrained model and then generate images.
 ```
 bash ./demo.sh
 ```
